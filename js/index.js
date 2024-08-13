@@ -80,7 +80,7 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
         const isLightMode = color === 'white';
 
         // Set background color
-        bodyStyle.backgroundColor = color === 'auto' ? 'white' : color;
+        bodyStyle.backgroundColor = color === 'auto' || color === 'white' ? '#fff' : color;
 
         // Set text colors
         const textColor = isDarkMode ? 'white' : 'black';
