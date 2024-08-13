@@ -63,26 +63,37 @@ parent.insertBefore(container2, container3.nextSibling);
 const divider = document.querySelectorAll('.example-divider')[1];
 parent.insertBefore(divider, container2);
 
+// change theme color
 const themeButton = document.querySelector('.sticky-btn');
 themeButton.addEventListener('click', (e) => {
     e.preventDefault();
     document.querySelector('.dropdown-menu').classList.toggle('show-dropdown');
 });
 
-document.querySelectorAll('.dropdown-item').forEach(el => {
-    el.addEventListener('click', (e) => {
-        e.preventDefault();
-        const color = el.getAttribute('data-theme-color');
-        document.body.style.backgroundColor = color;
-        if (color === "black") {
-            document.querySelectorAll('p').forEach(para => para.style.color = "white");
-            document.querySelectorAll('h1').forEach(para => para.style.color = "white");
-        } else {
-            // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-            document.querySelectorAll('p').forEach(para => para.style.color = "black");
-            // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-            document.querySelectorAll('h1').forEach(para => para.style.color = "black");
-        }
+document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const color = item.getAttribute('data-theme-color');
+        const bodyStyle = document.body.style;
+        const isDarkMode = color === 'black';
+        const isLightMode = color === 'white';
+
+        // Set background color
+        bodyStyle.backgroundColor = color === 'auto' ? 'white' : color;
+
+        // Set text colors
+        const textColor = isDarkMode ? 'white' : 'black';
+        document.querySelectorAll('p, h1').forEach(element => {
+            element.style.color = textColor;
+        });
+
+        // Toggle SVG visibility
+        document.querySelector('.moon-svg').style.display = isDarkMode ? 'block' : 'none';
+        document.querySelector('.light-svg').style.display = isLightMode ? 'block' : 'none';
+        document.querySelector('.half-circle').style.display = (!isDarkMode && !isLightMode) ? 'block' : 'none';
+
+        // Toggle dropdown menu visibility
         document.querySelector('.dropdown-menu').classList.toggle('show-dropdown');
     });
 });
