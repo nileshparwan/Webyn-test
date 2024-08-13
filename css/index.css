@@ -44,19 +44,16 @@ body {
     cursor: pointer;
 }
 
-/* Primary button styling */
 .primary-btn {
     background-color: #007bff;
     color: white;
 }
 
-/* Secondary button styling */
 .secondary-btn {
     background-color: transparent;
     border: 1px solid #6c757d;
     color: #6c757d;
 }
-
 
 .example-divider {
     width: 100%;
@@ -133,6 +130,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    padding: 1rem 4rem;
 }
 
 .content-3 {
@@ -199,6 +197,52 @@ body {
 
 .btn-secondary-3:hover {
     background-color: #e2e6ea;
+}
+
+.sticky-bar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.sticky-btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    font-size: 1em;
+    background-color: #66007a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: -140px;
+    left: -200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px;
+    display: none
+}
+
+.dropdown-item {
+    display: block;
+    padding: 5px 10px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.show-dropdown {
+    display: block;
 }
 
 @media screen and (min-width: 768px) {

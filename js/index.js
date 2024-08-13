@@ -10,12 +10,12 @@ newImg.style.width = '60px';
 newImg.style.height = 'auto';
 
 const newP = document.createElement('p');
-newP.textContent = 'This is a new paragraph'; 
+newP.textContent = 'This is a new paragraph';
 newP.style.fontSize = '25px';
 newP.style.color = 'gray';
 
-newImg.src = './images/webyn.png'; 
-newImg.alt = 'Product Logo'; 
+newImg.src = './images/webyn.png';
+newImg.alt = 'Product Logo';
 newP.innerHTML = '<strong>Webyn</strong>.ai';
 
 newDiv.appendChild(newImg);
@@ -35,7 +35,7 @@ const content = document.querySelector('.content');
 const description = container.querySelector('.description');
 const para1 = document.createElement('p');
 const para2 = document.createElement('p');
-para1.textContent = '97% of your traffic does not convert. Webyn automatically generates improvements on your website to maximize your conversions.'; 
+para1.textContent = '97% of your traffic does not convert. Webyn automatically generates improvements on your website to maximize your conversions.';
 para2.textContent = '100% No-Code.';
 para1.className = "description";
 para1.style.marginBottom = "0px";
@@ -49,7 +49,7 @@ const butonGroup = document.querySelector('.button-group');
 const btn = butonGroup.querySelectorAll('.btn');
 btn[0].innerHTML = "Book a demo";
 btn[0].style.borderRadius = "25px";
-btn[0].style.backgroundColor = '#0ea5e9'
+btn[0].style.backgroundColor = '#0ea5e9';
 btn[1].innerHTML = "Analyse my website <img src='./images/right-arrow.svg' alt='arrow' height='15' height='20' />";
 btn[1].style.borderRadius = "25px";
 
@@ -62,3 +62,27 @@ parent.insertBefore(container2, container3.nextSibling);
 
 const divider = document.querySelectorAll('.example-divider')[1];
 parent.insertBefore(divider, container2);
+
+const themeButton = document.querySelector('.sticky-btn');
+themeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.dropdown-menu').classList.toggle('show-dropdown');
+});
+
+document.querySelectorAll('.dropdown-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const color = el.getAttribute('data-theme-color');
+        document.body.style.backgroundColor = color;
+        if (color === "black") {
+            document.querySelectorAll('p').forEach(para => para.style.color = "white");
+            document.querySelectorAll('h1').forEach(para => para.style.color = "white");
+        } else {
+            // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+            document.querySelectorAll('p').forEach(para => para.style.color = "black");
+            // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+            document.querySelectorAll('h1').forEach(para => para.style.color = "black");
+        }
+        document.querySelector('.dropdown-menu').classList.toggle('show-dropdown');
+    });
+});
