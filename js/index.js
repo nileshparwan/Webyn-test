@@ -53,7 +53,7 @@ btn[0].style.backgroundColor = '#0ea5e9';
 btn[1].innerHTML = "Analyse my website <img src='./images/right-arrow.svg' alt='arrow' height='15' height='20' />";
 btn[1].style.borderRadius = "25px";
 
-// bonus: swap card
+// #bonus 1: swap card
 const container2 = document.querySelector('.container-2');
 const container3 = document.querySelector('.container-3');
 const parent = container2.parentNode;
@@ -63,12 +63,55 @@ parent.insertBefore(container2, container3.nextSibling);
 const divider = document.querySelectorAll('.example-divider')[1];
 parent.insertBefore(divider, container2);
 
-// change theme color
+// change theme color 
 const themeButton = document.querySelector('.sticky-btn');
 themeButton.addEventListener('click', (e) => {
     e.preventDefault();
     document.querySelector('.dropdown-menu').classList.toggle('show-dropdown');
 });
+
+// #bonus 2: email input
+const existingBtn = document.querySelector('.container .button-group');
+const existingBtnParent = existingBtn.parentNode;
+const createEmailDiv = document.createElement('div');
+createEmailDiv.style.margin = "0 auto";
+createEmailDiv.style.display = "flex";
+createEmailDiv.style.flexDirection = "row";
+createEmailDiv.style.width = "400px";
+createEmailDiv.style.justifyContent = "center";
+createEmailDiv.style.padding = "20px 0 40px 0";
+
+const createInputEmail = document.createElement('input');
+createInputEmail.type = "email";
+createInputEmail.placeholder = "tom@mail.com";
+createInputEmail.required = true;
+createInputEmail.style.width = "100%";
+createInputEmail.style.padding = "10px";
+createInputEmail.style.textAlign = "right";
+createEmailDiv.appendChild(createInputEmail);
+existingBtnParent.insertBefore(createEmailDiv, existingBtn);
+
+btn[0].addEventListener('click', (e) => {
+    e.preventDefault();
+    const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+    const value = createInputEmail.value;
+    const validEmail =  emailRegex.test(value);
+    if (value === "" || !validEmail) {
+        console.log('herhehrehrehr');
+        createInputEmail.style.borderColor = "red";
+    } else {
+        createInputEmail.style.borderColor = "green";
+        alert(value);
+    }
+});
+
+createInputEmail.onblur = () => {
+    createInputEmail.style.borderColor = "black";
+};
+
+createInputEmail.onfocus = () => {
+    createInputEmail.style.backgroundColor = ''; // Reset to default background color
+};
 
 document.querySelectorAll('.dropdown-item').forEach(item => {
     item.addEventListener('click', (event) => {
