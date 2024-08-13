@@ -100,14 +100,10 @@ btn[0].addEventListener('click', (e) => {
         console.log('herhehrehrehr');
         createInputEmail.style.borderColor = "red";
     } else {
-        createInputEmail.style.borderColor = "green";
+        createInputEmail.style.border = "1px solid green";
         alert(value);
     }
 });
-
-createInputEmail.onblur = () => {
-    createInputEmail.style.borderColor = "black";
-};
 
 createInputEmail.onfocus = () => {
     createInputEmail.style.backgroundColor = ''; // Reset to default background color
